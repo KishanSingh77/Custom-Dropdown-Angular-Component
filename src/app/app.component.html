@@ -1,0 +1,43 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="header">
+  <a href="#default" class="logo">CompanyLogo</a>
+  <div class="header-right">
+    <a class="active" href="#home">Home</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+</div>
+
+
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+  <!-- <h5>Got back {{responseFromChild | json}}</h5> -->
+</div>
+
+
+<div *ngIf="camera_names" class="row">
+  Sol : <input type="number" name="sol" id="sol" [(ngModel)]="sol_value">
+  <app-other (childEvent)="getDataFromChild($event)" [camera_names]=camera_names></app-other>
+
+</div>
+
+<div *ngIf="show_cards && cards_list">
+  <span *ngFor="let card of cards_list">
+    <span><span class="card" style="display: inline-block;  margin :5%;">
+        <img src={{card.img_src}} alt="Avatar" style="width:100%">
+
+        <span class="container">
+          <h4>ID : #{{card.id}} </h4>
+          <p><strong> {{card.camera.full_name}}</strong></p>
+          <p>Total photos : {{card.rover.total_photos}}</p>
+        </span>
+      </span>
+    </span>
+  </span>
+
+
+</div>
